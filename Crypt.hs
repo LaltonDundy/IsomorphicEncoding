@@ -14,7 +14,7 @@ g1 = reverse
 
 iso1 = (f1,g1)
 
-
+----------------------------------------------------------------
 
 -- function 2: inverse case
 f2 :: String -> String
@@ -28,7 +28,7 @@ g2 = f2
 
 iso2 = (f2,g2)
 
-
+-----------------------------------------------------------------
 
 -- function 3: inverse ascii value if letter
 f3 :: String -> String
@@ -47,7 +47,7 @@ g3 = f3
 
 iso3 = (f3,g3)
 
-
+----------------------------------------------------------------
 
 -- function 4: switch indicies
 f4 :: String -> String
@@ -62,27 +62,39 @@ g4 = f4
 
 iso4 = (f4,g4)
 
+-----------------------------------------------------------------
+
 -- function 5: () [] abractions
-
-switc :: Char -> Char
-switc '(' = ')'
-switc ')' = '('
-
-switc '[' = ']'
-switc ']' = '['
-
-switc '{' = '}'
-switc '}' = '{'
-
-switc x   = x
-
+-- this function is great becuase it is arbitrarily modifiable, as long as
+------the pattern matching is done in this style. With few small changes 
+------a whole new encryption can take place and still maintain isomorphism.
+  
 f5 :: String -> String
-f5 = fmap switc
+f5 = fmap switch 
+    where
+        switch '(' = ')'
+        switch ')' = '('
+
+        switch '[' = ']'
+        switch ']' = '['
+
+        switch '{' = '}'
+        switch '}' = '{'
+
+        switch  x  =  x
+
+
 
 g5 :: String -> String
 g5 = f5
 
 iso5 = (f5,g5)
+
+------------------------------------------------------------------
+
+
+-- ================================================================
+-- ================================================================
 
 -- List of all isomorphic function pairs
 lst :: [(String->String,String -> String)]
