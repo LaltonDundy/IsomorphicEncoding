@@ -31,13 +31,16 @@ iso2 = (f2,g2)
 
 
 -- function 3: inverse ascii value if letter
-inv ch
-        | (97 <= (ord ch )) && ((ord ch) <= 122)   = chr $! (122 - ((ord ch)-97))
-        | (65 <= (ord ch )) && ((ord ch) <= 90)    = chr $! (90  - ((ord ch)-65))
-        | otherwise                                = ch
-
 f3 :: String -> String
 f3 = fmap inv
+    where
+        inv ch                                     
+             | (97 <= (ord ch )) && ((ord ch) <= 122)   = chr $! (122 - ((ord ch)-97))
+             | (65 <= (ord ch )) && ((ord ch) <= 90)    = chr $! (90  - ((ord ch)-65))
+             | otherwise                                = ch
+
+
+
 
 g3 :: String -> String
 g3 = f3
